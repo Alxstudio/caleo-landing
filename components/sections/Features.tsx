@@ -46,12 +46,12 @@ export default function Features() {
 
   return (
     <section id="caracteristicas" ref={ref}
-      style={{ padding: "120px 24px", background: "#EDE8DF", position: "relative", overflow: "hidden" }}>
+      style={{ padding: "120px 24px", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
 
       {/* Fondo */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-        <div style={{ position: "absolute", top: "-20%", right: "-10%", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(107,122,58,0.06) 0%, transparent 60%)" }} />
-        <div style={{ position: "absolute", bottom: "-20%", left: "-10%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(184,160,106,0.05) 0%, transparent 60%)" }} />
+        <div style={{ position: "absolute", top: "-20%", right: "-10%", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(107,122,58,0.05) 0%, transparent 60%)" }} />
+        <div style={{ position: "absolute", bottom: "-20%", left: "-10%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(184,160,106,0.04) 0%, transparent 60%)" }} />
       </div>
 
       <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative" }}>

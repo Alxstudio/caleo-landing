@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { Search, GitCompare, PiggyBank } from "lucide-react";
 
 const steps = [
@@ -36,6 +37,7 @@ const steps = [
 
 export default function HowItWorks() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -68,16 +70,7 @@ export default function HowItWorks() {
         </motion.div>
 
         {/* Steps */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, position: "relative" }}>
-
-          {/* Línea conectora desktop */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{ position: "absolute", top: 52, left: "calc(16.6% + 24px)", right: "calc(16.6% + 24px)", height: 1, background: "linear-gradient(to right, #6B7A3A, #B8A06A, #C17F3A)", transformOrigin: "left", opacity: 0.3 }}
-            className="hidden lg:block"
-          />
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)", gap: 24, position: "relative" }}>
 
           {steps.map((step, i) => {
             const Icon = step.icon;
@@ -88,22 +81,15 @@ export default function HowItWorks() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.2 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                style={{ background: "white", borderRadius: 20, padding: "36px 32px", border: "1px solid #E8DFD0", boxShadow: "0 4px 24px rgba(61,43,31,0.06)", position: "relative", overflow: "hidden", cursor: "default" }}
+                style={{ background: "transparent", borderRadius: 20, padding: "56px 48px", border: "1px solid rgba(232,223,208,0.6)", position: "relative", overflow: "hidden", cursor: "default", ...(!isMobile && i === 2 ? { gridColumn: "1 / -1", maxWidth: "50%", margin: "0 auto", width: "100%" } : {}) }}
               >
                 {/* Número grande de fondo */}
                 <div style={{ position: "absolute", top: -10, right: 16, fontSize: "7rem", fontFamily: "var(--font-display)", fontWeight: 900, color: step.bg.replace("0.06", "0.4").replace("0.08", "0.4").replace("0.07", "0.4"), lineHeight: 1, userSelect: "none", filter: "blur(0.5px)" }}>
                   {step.number}
                 </div>
 
-                {/* Número visible */}
-                <div style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: 8, background: step.bg, marginBottom: 20 }}>
-                  <span style={{ fontSize: "0.75rem", color: step.color, fontFamily: "var(--font-sans)", fontWeight: 800 }}>{step.number}</span>
-                </div>
-
                 {/* Icono */}
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: step.bg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24 }}>
-                  <Icon size={24} color={step.color} />
-                </div>
+                <Icon size={24} color={step.color} style={{ marginBottom: 24, display: "block" }} />
 
                 <h3 style={{ fontSize: "1.2rem", fontFamily: "var(--font-display)", color: "#3D2B1F", margin: "0 0 12px", fontWeight: 700 }}>
                   {step.title}
