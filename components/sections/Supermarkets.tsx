@@ -25,7 +25,12 @@ const active = [
   },
 ];
 
-const coming = ["Lidl", "Carrefour", "Alcampo", "Consum", "Aldi", "El Corte Inglés"];
+const coming = [
+  { name: "Lidl",      logo: "/images/lidl-logo.png" },
+  { name: "Carrefour", logo: "/images/carrefour-logo.png" },
+  { name: "Alcampo",   logo: "/images/alcampo-logo.png" },
+  { name: "Aldi",      logo: "/images/aldi-logo.png" },
+];
 
 export default function Supermarkets() {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,7 +39,7 @@ export default function Supermarkets() {
 
   return (
     <section id="supermercados" ref={ref}
-      style={{ padding: "120px 24px", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
+      style={{ padding: isMobile ? "80px 16px" : "120px 24px", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
 
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
         <div style={{ position: "absolute", top: "-10%", right: "-5%", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(107,122,58,0.05) 0%, transparent 65%)" }} />
@@ -68,7 +73,7 @@ export default function Supermarkets() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              style={{ position: "relative", borderRadius: 24, overflow: "hidden", border: "1.5px solid rgba(232,223,208,0.8)", background: "transparent", padding: "40px 36px 36px", cursor: "default" }}
+              style={{ position: "relative", borderRadius: 24, overflow: "hidden", border: "1.5px solid rgba(232,223,208,0.8)", background: "transparent", padding: isMobile ? "28px 24px 24px" : "40px 36px 36px", cursor: "default" }}
             >
               {/* Franja de color lateral */}
               <div style={{ position: "absolute", top: 0, left: 0, width: 4, height: "100%", background: sm.color, borderRadius: "24px 0 0 24px" }} />
@@ -77,11 +82,13 @@ export default function Supermarkets() {
               <div style={{ position: "absolute", top: -60, right: -60, width: 220, height: 220, borderRadius: "50%", background: `radial-gradient(circle, ${sm.color}10 0%, transparent 70%)`, pointerEvents: "none" }} />
 
               {/* Logo decorativo */}
-              <img
-                src={sm.logo}
-                alt={sm.name}
-                style={{ position: "absolute", bottom: 16, right: 20, height: 64, width: "auto", opacity: 0.18, userSelect: "none", pointerEvents: "none" }}
-              />
+              {!isMobile && (
+                <img
+                  src={sm.logo}
+                  alt={sm.name}
+                  style={{ position: "absolute", bottom: 16, right: 20, height: 64, width: "auto", userSelect: "none", pointerEvents: "none" }}
+                />
+              )}
 
               {/* Badge activo */}
               <div style={{ display: "inline-flex", alignItems: "center", gap: 7, marginBottom: 28 }}>
@@ -115,23 +122,23 @@ export default function Supermarkets() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          style={{ border: "1.5px solid rgba(232,223,208,0.6)", borderRadius: 20, padding: "28px 36px", display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}
+          style={{ border: "1.5px solid rgba(232,223,208,0.6)", borderRadius: 20, padding: "20px 24px", display: isMobile ? "flex" : "inline-flex", flexDirection: isMobile ? "column" : "row", alignItems: isMobile ? "flex-start" : "center", gap: isMobile ? 16 : 24, flexWrap: "wrap", width: isMobile ? "100%" : "auto" }}
         >
           <span style={{ fontSize: "0.72rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", fontWeight: 700, letterSpacing: "0.08em", whiteSpace: "nowrap", flexShrink: 0 }}>
             PRÓXIMAMENTE
           </span>
-          <div style={{ width: 1, height: 20, background: "rgba(61,43,31,0.1)", flexShrink: 0 }} />
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            {coming.map((name, i) => (
-              <motion.span
+          {!isMobile && <div style={{ width: 1, height: 20, background: "rgba(61,43,31,0.1)", flexShrink: 0 }} />}
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
+            {coming.map((sm, i) => (
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.6 + i * 0.06, duration: 0.3 }}
-                style={{ fontSize: "0.82rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", fontWeight: 500, padding: "6px 14px", borderRadius: 99, border: "1px solid rgba(140,123,107,0.2)", background: "rgba(140,123,107,0.04)" }}
+                style={{ padding: "8px 16px", borderRadius: 12, border: "1px solid rgba(140,123,107,0.2)", background: "rgba(140,123,107,0.04)", display: "flex", alignItems: "center", justifyContent: "center", height: 44 }}
               >
-                {name}
-              </motion.span>
+                <img src={sm.logo} alt={sm.name} style={{ height: 24, width: "auto", maxWidth: 80, objectFit: "contain", opacity: 0.18 }} />
+              </motion.div>
             ))}
           </div>
         </motion.div>

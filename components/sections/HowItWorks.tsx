@@ -58,9 +58,6 @@ export default function HowItWorks() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           style={{ textAlign: "center", marginBottom: 80 }}
         >
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(107,122,58,0.08)", border: "1px solid rgba(107,122,58,0.15)", borderRadius: 99, padding: "6px 16px", marginBottom: 24 }}>
-            <span style={{ fontSize: "0.75rem", color: "#6B7A3A", fontFamily: "var(--font-sans)", fontWeight: 600, letterSpacing: "0.05em" }}>CÓMO FUNCIONA</span>
-          </div>
           <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontFamily: "var(--font-display)", color: "#3D2B1F", margin: "0 0 20px", fontWeight: 700, letterSpacing: "-0.02em" }}>
             Tres pasos para ahorrar
           </h2>

@@ -9,7 +9,7 @@ export default function CTA() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref}
+    <section id="unete" ref={ref}
       style={{ padding: "120px 24px", background: "#3D2B1F", position: "relative", overflow: "hidden" }}>
 
       {/* Fondo decorativo */}
@@ -36,22 +36,6 @@ export default function CTA() {
       <div style={{ maxWidth: 800, margin: "0 auto", position: "relative", textAlign: "center" }}>
 
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(107,122,58,0.2)", border: "1px solid rgba(107,122,58,0.3)", borderRadius: 99, padding: "6px 16px", marginBottom: 32 }}
-        >
-          <motion.span
-            animate={{ opacity: [1, 0.4, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            style={{ width: 6, height: 6, borderRadius: "50%", background: "#8A9B4A", display: "inline-block" }}
-          />
-          <span style={{ fontSize: "0.75rem", color: "#8A9B4A", fontFamily: "var(--font-sans)", fontWeight: 600, letterSpacing: "0.05em" }}>
-            GRATIS PARA SIEMPRE
-          </span>
-        </motion.div>
-
         {/* Título */}
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -85,43 +69,16 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, flexWrap: "wrap" }}
+          style={{ display: "flex", justifyContent: "center" }}
         >
           <motion.div whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300 }}>
             <Link href="/register" style={{ textDecoration: "none" }}>
-              <div style={{ padding: "18px 44px", background: "linear-gradient(135deg, #6B7A3A, #8A9B4A)", borderRadius: 14, display: "flex", alignItems: "center", gap: 10, boxShadow: "0 12px 40px rgba(107,122,58,0.4)" }}>
-                <span style={{ fontSize: "1rem", color: "white", fontFamily: "var(--font-sans)", fontWeight: 700 }}>Crear cuenta gratis</span>
+              <div style={{ padding: "18px 48px", background: "linear-gradient(135deg, #6B7A3A, #8A9B4A)", borderRadius: 14, display: "flex", alignItems: "center", gap: 10, boxShadow: "0 12px 40px rgba(107,122,58,0.4)" }}>
+                <span style={{ fontSize: "1rem", color: "white", fontFamily: "var(--font-sans)", fontWeight: 700 }}>Únete a nosotros</span>
                 <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)" }}>→</span>
               </div>
             </Link>
           </motion.div>
-
-          <motion.div whileHover={{ scale: 1.03, y: -3 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300 }}>
-            <Link href="/login" style={{ textDecoration: "none" }}>
-              <div style={{ padding: "18px 36px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, backdropFilter: "blur(10px)" }}>
-                <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-sans)", fontWeight: 600 }}>Ya tengo cuenta</span>
-              </div>
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        {/* Trust indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.8 }}
-          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 32, marginTop: 56, flexWrap: "wrap" }}
-        >
-          {[
-            "Sin tarjeta de crédito",
-            "100% gratuito",
-            "Datos reales",
-          ].map((t, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#6B7A3A" }} />
-              <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-sans)", fontWeight: 500 }}>{t}</span>
-            </div>
-          ))}
         </motion.div>
       </div>
     </section>
