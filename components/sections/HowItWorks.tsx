@@ -3,7 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { Search, GitCompare, PiggyBank } from "lucide-react";
+import { Search, GitCompare, DollarSign } from "lucide-react";
 
 const steps = [
   {
@@ -26,7 +26,7 @@ const steps = [
   },
   {
     number: "03",
-    icon: PiggyBank,
+    icon: DollarSign,
     title: "Ahorra en cada compra",
     description: "Caleo calcula automáticamente la combinación más barata para tu lista completa. Tú decides.",
     detail: "Hasta un 45% de ahorro",
