@@ -2,7 +2,7 @@
 
 import { motion, useInView, animate } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { TrendingDown, ShoppingCart, Percent } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 function Counter({ from, to, suffix = "", prefix = "" }: { from: number; to: number; suffix?: string; prefix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -25,13 +25,14 @@ function Counter({ from, to, suffix = "", prefix = "" }: { from: number; to: num
 
 
 const stats = [
-  { value: 45,   suffix: "%",  label: "de ahorro máximo por compra",    icon: Percent,      accent: "#6B7A3A" },
-  { value: 187,  suffix: "€",  label: "ahorro medio anual por usuario", icon: TrendingDown,  accent: "#B8A06A" },
-  { value: 7000, suffix: "+",  label: "productos comparados",           icon: ShoppingCart,  accent: "#C17F3A" },
+  { value: 45,   suffix: "%", label: "de ahorro máximo por compra",    accent: "#6B7A3A" },
+  { value: 187,  suffix: "€", label: "ahorro medio anual por usuario", accent: "#B8A06A" },
+  { value: 7000, suffix: "+", label: "productos comparados",           accent: "#C17F3A" },
 ];
 
 export default function Savings() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   return (
     <section id="ahorro" ref={ref}
@@ -68,24 +69,20 @@ export default function Savings() {
         </motion.div>
 
         {/* Stats — texto plano sin contenedores */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0 }}>
-          {stats.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <motion.div key={i}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                style={{ textAlign: "center", padding: "0 24px", borderRight: i < 2 ? "1px solid rgba(61,43,31,0.08)" : "none" }}
-              >
-                <Icon size={20} color={s.accent} strokeWidth={1.5} style={{ marginBottom: 16, opacity: 0.8 }} />
-                <div style={{ fontSize: "clamp(2.6rem, 5vw, 3.8rem)", fontFamily: "var(--font-display)", fontWeight: 800, color: s.accent, lineHeight: 1, marginBottom: 10, letterSpacing: "-0.03em" }}>
-                  <Counter from={0} to={s.value} suffix={s.suffix} />
-                </div>
-                <p style={{ fontSize: "0.85rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", margin: 0, lineHeight: 1.5, fontWeight: 400 }}>{s.label}</p>
-              </motion.div>
-            );
-          })}
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: isMobile ? 40 : 0 }}>
+          {stats.map((s, i) => (
+            <motion.div key={i}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              style={{ textAlign: "center", padding: "0 24px" }}
+            >
+              <div style={{ fontSize: "clamp(2.6rem, 5vw, 3.8rem)", fontFamily: "var(--font-numeric)", fontWeight: 800, color: s.accent, lineHeight: 1, marginBottom: 10, letterSpacing: "-0.04em", fontVariantNumeric: "tabular-nums" }}>
+                <Counter from={0} to={s.value} suffix={s.suffix} />
+              </div>
+              <p style={{ fontSize: "0.85rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", margin: 0, lineHeight: 1.5, fontWeight: 400 }}>{s.label}</p>
+            </motion.div>
+          ))}
         </div>
 
       </div>

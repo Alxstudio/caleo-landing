@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle2, Clock } from "lucide-react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const supermarkets = [
   {
@@ -57,6 +58,7 @@ const supermarkets = [
 
 export default function Supermarkets() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
@@ -76,8 +78,7 @@ export default function Supermarkets() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "end", marginBottom: 72 }}
-          className="grid-cols-1 lg:grid-cols-2"
+          style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? 24 : 60, alignItems: "end", marginBottom: 72 }}
         >
           <div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(107,122,58,0.1)", border: "1px solid rgba(107,122,58,0.2)", borderRadius: 99, padding: "6px 16px", marginBottom: 24 }}>

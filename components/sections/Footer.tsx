@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useIsMobile } from "@/hooks/useIsMobile";
 // Iconos sociales inline
 
 const links = {
@@ -38,6 +39,7 @@ const socials = [
 ];
 
 export default function Footer() {
+  const isMobile = useIsMobile(768);
   return (
     <footer style={{ background: "#2D1F16", borderTop: "1px solid rgba(255,255,255,0.05)", position: "relative", overflow: "hidden" }}>
 
@@ -47,8 +49,7 @@ export default function Footer() {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "72px 24px 40px" }}>
 
         {/* Top — logo + links */}
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, marginBottom: 64 }}
-          className="grid-cols-1 md:grid-cols-4">
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr 1fr", gap: isMobile ? 36 : 48, marginBottom: 64 }}>
 
           {/* Logo + descripción */}
           <div>

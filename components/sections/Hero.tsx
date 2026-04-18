@@ -2,9 +2,11 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
@@ -45,7 +47,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          style={{ fontSize: "clamp(2.2rem, 5.5vw, 5rem)", fontFamily: "var(--font-display)", color: "#3D2B1F", margin: "0 0 8px", fontWeight: 700, lineHeight: 1.05, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}
+          style={{ fontSize: isMobile ? "clamp(1.8rem, 8vw, 2.6rem)" : "clamp(2.2rem, 5.5vw, 5rem)", fontFamily: "var(--font-display)", color: "#3D2B1F", margin: "0 0 8px", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.03em" }}
         >
           No se trata de comprar menos
         </motion.h1>
@@ -53,7 +55,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          style={{ fontSize: "clamp(2.2rem, 5.5vw, 5rem)", fontFamily: "var(--font-display)", color: "#6B7A3A", margin: "0 0 32px", fontWeight: 700, fontStyle: "italic", lineHeight: 1.05, letterSpacing: "-0.03em", whiteSpace: "nowrap" }}
+          style={{ fontSize: isMobile ? "clamp(1.8rem, 8vw, 2.6rem)" : "clamp(2.2rem, 5.5vw, 5rem)", fontFamily: "var(--font-display)", color: "#6B7A3A", margin: "0 0 32px", fontWeight: 700, fontStyle: "italic", lineHeight: 1.1, letterSpacing: "-0.03em" }}
         >
           Se trata de comprar mejor
         </motion.h1>
