@@ -9,8 +9,12 @@ export default function CTA() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="unete" ref={ref}
-      style={{ padding: "120px 24px", background: "#3D2B1F", position: "relative", overflow: "hidden" }}>
+    <motion.section id="unete" ref={ref}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+      style={{ padding: "160px 24px", background: "#3D2B1F", position: "relative", overflow: "hidden", userSelect: "none" }}>
 
       {/* Fondo decorativo */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
@@ -59,9 +63,9 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.4 }}
-          style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-sans)", maxWidth: 480, margin: "0 auto 52px", lineHeight: 1.7 }}
+          style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", maxWidth: 480, margin: "0 auto 52px", lineHeight: 1.7, whiteSpace: "pre-line" }}
         >
-          Sin tarjeta de crédito. Sin suscripciones. Solo una herramienta que te ayuda a gastar menos en el supermercado.
+          {"Llevas tiempo pagando de más sin saberlo.\nCaleo te lo demuestra en menos de un minuto.\nGratis, sin registros, sin pagos."}
         </motion.p>
 
         {/* CTAs */}
@@ -72,7 +76,7 @@ export default function CTA() {
           style={{ display: "flex", justifyContent: "center" }}
         >
           <motion.div whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300 }}>
-            <Link href="/register" style={{ textDecoration: "none" }}>
+            <Link href="/proximamente" style={{ textDecoration: "none" }}>
               <div style={{ padding: "18px 48px", background: "linear-gradient(135deg, #6B7A3A, #8A9B4A)", borderRadius: 14, display: "flex", alignItems: "center", gap: 10, boxShadow: "0 12px 40px rgba(107,122,58,0.4)" }}>
                 <span style={{ fontSize: "1rem", color: "white", fontFamily: "var(--font-sans)", fontWeight: 700 }}>Únete a nosotros</span>
                 <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)" }}>→</span>
@@ -81,6 +85,6 @@ export default function CTA() {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

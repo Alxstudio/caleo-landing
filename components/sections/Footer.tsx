@@ -1,91 +1,70 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/useIsMobile";
 // Iconos sociales inline
 
 const links = {
   producto: [
-    { label: "Cómo funciona", href: "#como-funciona" },
-    { label: "Características", href: "#caracteristicas" },
+    { label: "Comparador", href: "#como-funciona" },
+    { label: "Servicios", href: "#caracteristicas" },
     { label: "Ahorro", href: "#ahorro" },
     { label: "Supermercados", href: "#supermercados" },
   ],
   cuenta: [
-    { label: "Crear cuenta", href: "/register" },
-    { label: "Iniciar sesión", href: "/login" },
-  ],
-  legal: [
-    { label: "Política de privacidad", href: "/privacidad" },
-    { label: "Términos de uso", href: "/terminos" },
-    { label: "Cookies", href: "/cookies" },
+    { label: "Crear cuenta", href: "/proximamente" },
+    { label: "Iniciar sesión", href: "/proximamente" },
   ],
 };
 
 const socials = [
   {
-    href: "https://github.com", label: "GitHub",
-    svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    href: "https://github.com/Alxstudio", label: "GitHub",
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
   },
   {
-    href: "https://linkedin.com", label: "LinkedIn",
-    svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    href: "https://www.linkedin.com/in/alex-cortell-belenguer-7445a0332/", label: "LinkedIn",
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
   },
   {
-    href: "https://twitter.com", label: "X",
-    svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    href: "https://www.instagram.com/alxdevstudio/", label: "Instagram",
+    svg: <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
   },
 ];
 
 export default function Footer() {
   const isMobile = useIsMobile(768);
   return (
-    <footer style={{ background: "#2D1F16", borderTop: "1px solid rgba(255,255,255,0.05)", position: "relative", overflow: "hidden" }}>
+    <footer style={{ background: "#2D1F16", borderTop: "1px solid rgba(255,255,255,0.05)", position: "relative", overflow: "hidden", userSelect: "none" }}>
 
-      {/* Glow top */}
-      <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 600, height: 1, background: "linear-gradient(to right, transparent, rgba(107,122,58,0.4), transparent)" }} />
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "72px 24px 40px" }}>
 
         {/* Top — logo + links */}
-        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr 1fr", gap: isMobile ? 36 : 48, marginBottom: 64 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "2fr 1fr 1fr", gap: isMobile ? 36 : 48, marginBottom: 64, alignItems: "start" }}>
 
           {/* Logo + descripción */}
           <div>
             <Link href="/" style={{ textDecoration: "none", display: "inline-block", marginBottom: 16 }}>
               <img src="/images/oscuropng.png" alt="Caleo" style={{ height: 36, width: "auto" }} />
             </Link>
-            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 24px", maxWidth: 260 }}>
-              Compara precios entre supermercados y ahorra en cada compra. Simple, rápido y gratuito.
+            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 24px", maxWidth: 260, whiteSpace: "pre-line" }}>
+              {"Compara precios entre supermercados\ny ahorra en cada compra.\nSimple, rápido y gratuito."}
             </p>
-            {/* Socials */}
-            <div style={{ display: "flex", gap: 10 }}>
-              {socials.map((s, i) => (
-                  <motion.a key={i} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                    whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }}
-                    style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,0.4)", textDecoration: "none", transition: "color 0.2s" }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
-                  >
-                    {s.svg}
-                  </motion.a>
-                ))}
-            </div>
           </div>
 
           {/* Links columnas */}
           {Object.entries(links).map(([section, items]) => (
             <div key={section}>
-              <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.25)", fontFamily: "var(--font-sans)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 16px" }}>
+              <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-sans)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", margin: "0 0 16px" }}>
                 {section === "producto" ? "Producto" : section === "cuenta" ? "Cuenta" : "Legal"}
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {items.map((item, i) => (
                   <Link key={i} href={item.href}
-                    style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-sans)", textDecoration: "none", transition: "color 0.2s" }}
-                    onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
-                    onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+                    style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", fontFamily: "var(--font-sans)", textDecoration: "none", transition: "color 0.2s" }}
+                    onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "white")}
+                    onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = "rgba(255,255,255,0.8)")}
                   >
                     {item.label}
                   </Link>
@@ -100,14 +79,19 @@ export default function Footer() {
 
         {/* Bottom */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.2)", fontFamily: "var(--font-sans)", margin: 0 }}>
+          <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-sans)", margin: 0 }}>
             © {new Date().getFullYear()} Caleo. Todos los derechos reservados.
           </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#6B7A3A" }} />
-            <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.2)", fontFamily: "var(--font-sans)" }}>
-              Hecho con cariño en España
-            </span>
+          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            {socials.map((s, i) => (
+              <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                style={{ color: "rgba(255,255,255,0.55)", textDecoration: "none", transition: "color 0.2s", display: "flex" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "white")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
+              >
+                {s.svg}
+              </a>
+            ))}
           </div>
         </div>
       </div>

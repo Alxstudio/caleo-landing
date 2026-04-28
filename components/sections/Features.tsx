@@ -7,10 +7,10 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 const features = [
   { title: "Comparador inteligente", description: "Compara el precio de cada producto entre supermercados y elige siempre la opción más barata para tu cesta.", color: "#6B7A3A" },
   { title: "Modo Super Ahorro", description: "Activa el modo ahorro y Caleo filtra automáticamente solo los productos comparables, maximizando tu ahorro.", color: "#B8A06A" },
-  { title: "Listas de la compra", description: "Crea listas personalizadas y recibe alertas cuando algún producto esté en oferta.", color: "#C17F3A" },
-  { title: "Ofertas en tiempo real", description: "Descubre las mejores ofertas de la semana en Mercadona y DIA. Filtra por categoría o supermercado.", color: "#6B7A3A" },
+  { title: "Listas de la compra", description: "Crea listas personalizadas y recibe alertas cuando alguno de tus productos disponibles esté en oferta.", color: "#C17F3A" },
+  { title: "Ofertas en tiempo real", description: "Descubre las mejores ofertas de la semana\nen Mercadona y DIA y filtra por categoría o supermercado.", color: "#6B7A3A" },
   { title: "Historial de precios", description: "Visualiza la evolución del precio de cualquier producto y detecta cuándo es el mejor momento para comprar.", color: "#B8A06A" },
-  { title: "Chat IA", description: "Pregúntale a nuestro asistente qué comprar, dónde ahorrar más o que te genere una lista completa.", color: "#8C7B6B" },
+  { title: "Asistente de Caleo", description: "Pregúntale a nuestro asistente qué comprar, dónde ahorrar más o que te genere una lista completa a tu gusto de forma personalizada.", color: "#8C7B6B" },
 ];
 
 const DURATION = 4000;
@@ -45,8 +45,12 @@ export default function Features() {
   const current = features[active];
 
   return (
-    <section id="caracteristicas" ref={ref}
-      style={{ padding: "120px 24px", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
+    <motion.section id="caracteristicas" ref={ref}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+      style={{ padding: "160px 24px", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
 
       {/* Fondo */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
@@ -117,7 +121,7 @@ export default function Features() {
                 </h3>
 
                 {/* Descripción */}
-                <p style={{ fontSize: "1rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.75, margin: 0, maxWidth: 520 }}>
+                <p style={{ fontSize: "1rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.75, margin: 0, maxWidth: 520, whiteSpace: "pre-line" }}>
                   {current.description}
                 </p>
               </motion.div>
@@ -151,6 +155,6 @@ export default function Features() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

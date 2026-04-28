@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 const active = [
@@ -16,7 +16,7 @@ const active = [
   },
   {
     name: "DIA",
-    description: "Precios competitivos y ofertas semanales. Cada producto comparado en tiempo real con Mercadona.",
+    description: "Precios competitivos y ofertas semanales.\nCada producto comparado en tiempo real con Mercadona.",
     products: "3.500+",
     color: "#B8A06A",
     initial: "D",
@@ -36,10 +36,15 @@ export default function Supermarkets() {
   const ref = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
-    <section id="supermercados" ref={ref}
-      style={{ padding: isMobile ? "80px 16px" : "120px 24px", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
+    <motion.section id="supermercados" ref={ref}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+      style={{ padding: isMobile ? "120px 16px" : "160px 24px", background: "#F5F0E8", position: "relative", overflow: "hidden" }}>
 
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
         <div style={{ position: "absolute", top: "-10%", right: "-5%", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(107,122,58,0.05) 0%, transparent 65%)" }} />
@@ -72,9 +77,17 @@ export default function Supermarkets() {
               initial={{ opacity: 0, y: 32 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6, transition: { duration: 0.25 } }}
+              whileHover={{ y: -8, scale: 1.015, boxShadow: "0 24px 64px rgba(107,122,58,0.18), 0 0 0 1.5px rgba(107,122,58,0.25)", transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
+              onMouseEnter={() => setHoveredCard(i)}
+              onMouseLeave={() => setHoveredCard(null)}
               style={{ position: "relative", borderRadius: 24, overflow: "hidden", border: "1.5px solid rgba(232,223,208,0.8)", background: "transparent", padding: isMobile ? "28px 24px 24px" : "40px 36px 36px", cursor: "default" }}
             >
+              {/* Glow verde en hover */}
+              <motion.div
+                animate={{ opacity: hoveredCard === i ? 1 : 0 }}
+                transition={{ duration: 0.35 }}
+                style={{ position: "absolute", inset: 0, borderRadius: 24, pointerEvents: "none", background: "radial-gradient(ellipse at 50% -10%, rgba(107,122,58,0.2) 0%, transparent 65%)" }}
+              />
               {/* Franja de color lateral */}
               <div style={{ position: "absolute", top: 0, left: 0, width: 4, height: "100%", background: sm.color, borderRadius: "24px 0 0 24px" }} />
 
@@ -104,7 +117,7 @@ export default function Supermarkets() {
                 {sm.name}
               </h3>
 
-              <p style={{ fontSize: "0.9rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 28px", maxWidth: 320 }}>
+              <p style={{ fontSize: "0.9rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 28px", maxWidth: 320, whiteSpace: "pre-line" }}>
                 {sm.description}
               </p>
 
@@ -144,6 +157,6 @@ export default function Supermarkets() {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
