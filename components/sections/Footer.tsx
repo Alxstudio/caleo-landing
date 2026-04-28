@@ -45,10 +45,14 @@ export default function Footer() {
 
           {/* Logo + descripción */}
           <div>
-            <Link href="/" style={{ textDecoration: "none", display: "inline-block", marginBottom: 16 }}>
-              <img src="/images/oscuropng.png" alt="Caleo" style={{ height: 36, width: "auto" }} />
-            </Link>
-            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 24px", maxWidth: 260, whiteSpace: "pre-line" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+              <Link href="/" style={{ textDecoration: "none", display: "inline-flex" }}>
+                <img src="/images/oscuropng.png" alt="Caleo" style={{ height: 36, width: "auto" }} />
+              </Link>
+              <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.12)" }} />
+              <img src="/images/logo_blanco.png" alt="Logo" style={{ height: 36, width: "auto", opacity: 0.85 }} />
+            </div>
+            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 24px", maxWidth: 260, whiteSpace: isMobile ? "normal" : "pre-line" }}>
               {"Compara precios entre supermercados\ny ahorra en cada compra.\nSimple, rápido y gratuito."}
             </p>
           </div>

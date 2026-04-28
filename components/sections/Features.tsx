@@ -121,7 +121,7 @@ export default function Features() {
                 </h3>
 
                 {/* Descripción */}
-                <p style={{ fontSize: "1rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.75, margin: 0, maxWidth: 520, whiteSpace: "pre-line" }}>
+                <p style={{ fontSize: "1rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.75, margin: 0, maxWidth: 520, whiteSpace: isMobile ? "normal" : "pre-line" }}>
                   {current.description}
                 </p>
               </motion.div>

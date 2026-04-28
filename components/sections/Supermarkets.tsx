@@ -117,7 +117,7 @@ export default function Supermarkets() {
                 {sm.name}
               </h3>
 
-              <p style={{ fontSize: "0.9rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 28px", maxWidth: 320, whiteSpace: "pre-line" }}>
+              <p style={{ fontSize: "0.9rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 28px", maxWidth: 320, whiteSpace: isMobile ? "normal" : "pre-line" }}>
                 {sm.description}
               </p>
 

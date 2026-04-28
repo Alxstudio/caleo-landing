@@ -3,10 +3,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function CTA() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isMobile = useIsMobile();
 
   return (
     <motion.section id="unete" ref={ref}
@@ -63,7 +65,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.4 }}
-          style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", maxWidth: 480, margin: "0 auto 52px", lineHeight: 1.7, whiteSpace: "pre-line" }}
+          style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", maxWidth: 480, margin: "0 auto 52px", lineHeight: 1.7, whiteSpace: isMobile ? "normal" : "pre-line" }}
         >
           {"Llevas tiempo pagando de más sin saberlo.\nCaleo te lo demuestra en menos de un minuto.\nGratis, sin registros, sin pagos."}
         </motion.p>

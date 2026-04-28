@@ -104,7 +104,7 @@ export default function HowItWorks() {
                 <h3 style={{ fontSize: "1.2rem", fontFamily: "var(--font-display)", color: "#3D2B1F", margin: "0 0 12px", fontWeight: 700 }}>
                   {step.title}
                 </h3>
-                <p style={{ fontSize: "0.9rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 20px", whiteSpace: "pre-line" }}>
+                <p style={{ fontSize: "0.9rem", color: "#8C7B6B", fontFamily: "var(--font-sans)", lineHeight: 1.7, margin: "0 0 20px", whiteSpace: isMobile ? "normal" : "pre-line" }}>
                   {step.description}
                 </p>
 
