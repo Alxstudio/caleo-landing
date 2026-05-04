@@ -111,8 +111,8 @@ export default function Navbar() {
 
             {/* CTAs derecha */}
             <div style={{ display: "flex", alignItems: "center", gap: 4, flex: 1, justifyContent: "flex-end" }}>
-              <NavTextLink href="/proximamente" label="Iniciar sesión" />
-              <NavTextLink href="/proximamente" label="Registrarse" />
+              <NavTextLink href="https://caleo-app-jet.vercel.app/login" label="Iniciar sesión" />
+              <NavTextLink href="https://caleo-app-jet.vercel.app/register" label="Registrarse" />
             </div>
           </>
         )}
@@ -192,12 +192,12 @@ export default function Navbar() {
               transition={{ delay: 0.2, duration: 0.18 }}
               style={{ display: "flex", flexDirection: "column", gap: 6 }}
             >
-              <Link href="/proximamente" onClick={() => setMenuOpen(false)}
+              <Link href="https://caleo-app-jet.vercel.app/login" onClick={() => setMenuOpen(false)}
                 style={{ fontSize: "0.85rem", color: "#3D2B1F", fontFamily: "system-ui", fontWeight: 600, textDecoration: "none", padding: "10px 16px" }}
               >
                 Iniciar sesión
               </Link>
-              <Link href="/proximamente" onClick={() => setMenuOpen(false)}
+              <Link href="https://caleo-app-jet.vercel.app/register" onClick={() => setMenuOpen(false)}
                 style={{ fontSize: "0.85rem", color: "#F5F0E8", fontFamily: "system-ui", fontWeight: 600, textDecoration: "none", padding: "10px 20px", background: "#6B7A3A", borderRadius: 10, textAlign: "center" }}
               >
                 Registrarse

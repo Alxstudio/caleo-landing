@@ -78,7 +78,7 @@ export default function CTA() {
           style={{ display: "flex", justifyContent: "center" }}
         >
           <motion.div whileHover={{ scale: 1.04, y: -3 }} whileTap={{ scale: 0.97 }} transition={{ type: "spring", stiffness: 300 }}>
-            <Link href="/proximamente" style={{ textDecoration: "none" }}>
+            <Link href="https://caleo-app-jet.vercel.app/register" style={{ textDecoration: "none" }}>
               <div style={{ padding: "18px 48px", background: "linear-gradient(135deg, #6B7A3A, #8A9B4A)", borderRadius: 14, display: "flex", alignItems: "center", gap: 10, boxShadow: "0 12px 40px rgba(107,122,58,0.4)" }}>
                 <span style={{ fontSize: "1rem", color: "white", fontFamily: "var(--font-sans)", fontWeight: 700 }}>Únete a nosotros</span>
                 <span style={{ fontSize: "1rem", color: "rgba(255,255,255,0.7)" }}>→</span>

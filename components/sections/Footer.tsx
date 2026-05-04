@@ -12,8 +12,8 @@ const links = {
     { label: "Supermercados", href: "#supermercados" },
   ],
   cuenta: [
-    { label: "Crear cuenta", href: "/proximamente" },
-    { label: "Iniciar sesión", href: "/proximamente" },
+    { label: "Crear cuenta", href: "https://caleo-app-jet.vercel.app/register" },
+    { label: "Iniciar sesión", href: "https://caleo-app-jet.vercel.app/login" },
   ],
 };
 
